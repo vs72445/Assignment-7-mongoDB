@@ -1,30 +1,29 @@
-const express = require("express");
-const mongoose = require("mongoose");
 
+const mongoose = require('mongoose');
+
+//defining schema
 const flightSchema = new mongoose.Schema({
+    //flightFromCreateFlight: { type:mongoose.Schema.Types.ObjectId, ref: 'flights' },
     flightNo: {
         type: String,
-        required: true,
-        unique: true
+        unique: true,
+        required: true
     },
-    travel_btw_cities: {
+    travelBtwCities: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     },
-    flight_timmings: {
+    flightTimmings: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     },
     planeCategory: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     }
-})
+});
 
-// creating a new collection...
-const FlightDetails = new mongoose.model("FlightDetail", flightSchema);
 
-module.exports = FlightDetails;
+const FlightModel = mongoose.model("Flights", flightSchema);
+
+module.exports = FlightModel;

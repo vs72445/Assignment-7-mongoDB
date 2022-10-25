@@ -1,17 +1,17 @@
-const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/flights", {
-    useNewUrlParser: true
-// }, () => {
-//     try {
-//         console.log("Database is connected");
-//     } catch (err) {
-//         console.log("Database is not connected", err);
-//     }
-// });
+const mongoose = require('mongoose')
 
-}).then(() => {
-    console.log("Connection sucessful");
-}).catch((err) => {
-    console.log("No connection", err);
-});
+const connectDB = async (Database_URL) => {
+    try {
+        const db_options = {
+            dbName: "flights",
+        }
+        await mongoose.connect(Database_URL, db_options);
+        console.log("Database is Connected");
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+module.exports = connectDB;
